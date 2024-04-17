@@ -11,7 +11,7 @@ async function getDivers() {
         }
 
         const response = await axios.get(URL as string, { headers});
-        console.log(response.data);
+        // console.log(response.data);
 
         return response.data.record
     } catch (error) {

@@ -42,10 +42,10 @@ function App() {
 
   useEffect(() => {
     getDivers().then((data: any) => {
-      console.log('Warmup')
-      console.log(data)
+      // console.log('Warmup')
+      // console.log(data)
       const yesterday = isYesterday(data.lastUpdated)
-      console.log(yesterday)
+      // console.log(yesterday)
       if (yesterday) {
         setDivers(DefaultDivers);
       }else{
