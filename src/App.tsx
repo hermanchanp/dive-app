@@ -97,21 +97,21 @@ function App() {
       </h1>
       {
         diveCount() > 2 && <>
-          <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-7xl font-medium tracking-tight text-transparent md:text-5xl text-green-500">
+          <h1 className="pt-4 pb-8 text-7xl md:text-5xl text-green-500">
             Yes
           </h1>
         </>
       }
       {
         diveCount() == 2 && <>
-          <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-7xl font-medium tracking-tight text-transparent md:text-5xl text-orange-500">
+          <h1 className="pt-4 pb-8 text-7xl  md:text-5xl text-orange-500">
             Maybe
           </h1>
         </>
       }
       {
         diveCount() <= 1  && <>
-          <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-7xl font-medium tracking-tight text-transparent md:text-5xl text-red-500">
+          <h1 className="pt-4 pb-8  text-7xl  md:text-5xl text-red-500">
             No
           </h1>
         </>
