@@ -3,7 +3,6 @@ import './App.css';
 import getDivers from './queries/GetDivers';
 import DefaultDivers from './default-data/DefaultDivers';
 import updateDivers from './queries/UpdateDivers';
-import { FaTrash } from "react-icons/fa";
 import moment from 'moment';
 
 function App() {
