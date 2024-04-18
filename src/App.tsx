@@ -14,10 +14,7 @@ function App() {
 
   useEffect(() => {
     getDivers().then((data: any) => {
-      // console.log('Warmup')
-      // console.log(data)
       const yesterday = isYesterday(data.lastUpdated)
-      // console.log(yesterday)
       if (yesterday) {
         setDivers(DefaultDivers);
       }else{
@@ -34,7 +31,6 @@ function App() {
       lastUpdated: new Date()
     }
     updateDivers(data).then((data: any) => {
-
       // console.log(data)
     })
   }
@@ -44,7 +40,6 @@ function App() {
     )
     setDivers(newDivers);
     updateData(newDivers);
-    // console.log('clicked', id)
 
   };
   const handleTimeChange = (id: string, e: any) => {
@@ -54,7 +49,6 @@ function App() {
     )
     setDivers(newDivers);
     updateData(newDivers);
-    // console.log('clicked', id, e.target.value)
   };
 
   const handleReasonChange = (id: string, e: any) => {
