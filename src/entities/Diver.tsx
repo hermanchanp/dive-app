@@ -3,7 +3,7 @@ interface Diver {
     id: string;
     name: string;
     available: boolean;
-    reason?: boolean;
+    reason?: string;
     availableFrom?: string;
     updatedAt: Date;
     alignLeft: boolean;
