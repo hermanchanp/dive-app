@@ -3,6 +3,8 @@ import './App.css';
 import getDivers from './queries/GetDivers';
 import DefaultDivers from './default-data/DefaultDivers';
 import updateDivers from './queries/UpdateDivers';
+import { FaTrash } from "react-icons/fa";
+import moment from 'moment';
 
 function App() {
   const [divers, setDivers] = useState(DefaultDivers); 
@@ -184,7 +186,7 @@ function App() {
                           <label htmlFor="time">Select time:</label>
                           <input disabled={!diver.available} type="time" id="time" name="time" value={diver.availableFrom} onChange={(e) => handleTimeChange(diver.id, e)} />
                         </div>
-                        <div className="pt-4 text-xs text-gray-600">Last updated: {diver.updatedAt.toLocaleString()}</div>
+                        <div className="pt-4 text-xs text-gray-600">Last updated: {moment(diver.updatedAt.toLocaleString()).format("MMMM Do YYYY, h:mm:ss a")}</div>
                       </div>
                     </div>
                   )
@@ -220,7 +222,7 @@ function App() {
                             </div>
                           )
                         }
-                        <div className="pt-4 text-xs text-gray-600">Last updated: {diver.updatedAt.toLocaleString()}</div>
+                        <div className="pt-4 text-xs text-gray-600">Last updated: {moment(diver.updatedAt.toLocaleString()).format("MMMM Do YYYY, h:mm:ss a")}</div>
                       </div>
                       <img
                           className="rounded-2xl border border-blue-800"
