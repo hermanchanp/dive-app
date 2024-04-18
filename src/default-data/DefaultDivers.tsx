@@ -1,6 +1,6 @@
 import Diver from "../entities/Diver";
 
-const yesterday = new Date;
+const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1)
 
 const DefaultDivers: Diver[] = [
