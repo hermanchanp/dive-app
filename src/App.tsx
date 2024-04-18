@@ -3,6 +3,7 @@ import './App.css';
 import getDivers from './queries/GetDivers';
 import DefaultDivers from './default-data/DefaultDivers';
 import updateDivers from './queries/UpdateDivers';
+import { FaTrash } from "react-icons/fa";
 
 function App() {
   const [divers, setDivers] = useState(DefaultDivers); 
@@ -67,7 +68,7 @@ function App() {
   }
   const toggleReactComp = (id: string, available: boolean) => {
     const newDivers = divers.map(diver => 
-      diver.id === id ? { ...diver, available: !available, updatedAt: new Date() } : diver
+      diver.id === id ? { ...diver, available: !available, reason: undefined, updatedAt: new Date() } : diver
     )
     setDivers(newDivers);
     updateData(newDivers);
@@ -82,6 +83,13 @@ function App() {
     setDivers(newDivers);
     updateData(newDivers);
     // console.log('clicked', id, e.target.value)
+  };
+  
+  const deleteDiver = (id: string) => {
+    const newDivers = divers.filter(diver => 
+      diver.id != id)
+    setDivers(newDivers);
+    updateData(newDivers);
   };
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center bg-orange-300 p-2">
@@ -165,6 +173,11 @@ function App() {
                             <input disabled={!diver.available} type="time" id="time" name="time" value={diver.availableFrom} onChange={(e) => handleTimeChange(diver.id, e)} />
                           </div>
                           <div className="pt-4 text-xs text-gray-600">Last updated: {diver.updatedAt.toLocaleString()}</div>
+                          <div className="pt-2">
+                        <button onClick={() => deleteDiver(diver.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        <FaTrash />
+                        </button>
+                        </div>
                         </div>
                       </div>
                     )
@@ -193,6 +206,9 @@ function App() {
                             <input disabled={!diver.available} type="time" id="time" name="time" value={diver.availableFrom} onChange={(e) => handleTimeChange(diver.id, e)} />
                           </div>
                           <div className="pt-4 text-xs text-gray-600">Last updated: {diver.updatedAt.toLocaleString()}</div>
+                          <div className="pt-2">
+      
+                        </div>
                         </div>
                         <img
                             className="rounded-2xl border border-blue-800"
