@@ -14,8 +14,10 @@ function App() {
 
   useEffect(() => {
     getDivers().then((data: any) => {
+      // console.log('Warmup')
+      // console.log(data)
       const yesterday = isYesterday(data.lastUpdated)
-
+      // console.log(yesterday)
       if (yesterday) {
         setDivers(DefaultDivers);
       }else{
@@ -54,6 +56,16 @@ function App() {
     updateData(newDivers);
     // console.log('clicked', id, e.target.value)
   };
+
+  const handleReasonChange = (id: string, e: any) => {
+    const reason = e.target.value;
+    const newDivers = divers.map(diver => 
+      diver.id === id ? { ...diver, reason: reason, updatedAt: new Date() } : diver
+    )
+    setDivers(newDivers);
+    updateData(newDivers);
+  };
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center bg-orange-300 p-2">
           <img
@@ -66,7 +78,7 @@ function App() {
       <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-5xl">
         Are we diving tonight?
       </h1>
-      {isLoading ? <div className="spinner"> </div> :
+      { isLoading ? <div className="spinner"> </div> :
       <>
         <DiveStatus diveCount={diveCount(divers)} closestTime={findClosestTime(divers)} />
   
@@ -78,6 +90,7 @@ function App() {
                   diver={diver}
                   toggleReactComp={toggleReactComp}
                   handleTimeChange={handleTimeChange}
+                  handleReasonChange={handleReasonChange}
                 />
               ))
             }

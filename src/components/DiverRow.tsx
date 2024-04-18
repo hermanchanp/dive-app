@@ -1,12 +1,14 @@
 import Diver from "../entities/Diver";
 import classNames from 'classnames';
+import moment from 'moment';
 
 type DiverRowProps = {
     diver: Diver,
     toggleReactComp: (id: string, available: boolean) => void,
     handleTimeChange: (id: string, e: any) => void,
+    handleReasonChange: (id: string, e: any) => void,
 }
-const DiveStatus = ({diver, toggleReactComp, handleTimeChange}: DiverRowProps) => {
+const DiveStatus = ({diver, toggleReactComp, handleTimeChange, handleReasonChange}: DiverRowProps) => {
     const imageSectionClass = classNames({
         'w-[30%]': true,
         'order-last': !diver.alignLeft
@@ -42,11 +44,19 @@ const DiveStatus = ({diver, toggleReactComp, handleTimeChange}: DiverRowProps) =
                 </button>
                   <span className="pl-2">{diver.available ? "yes": "no"}</span>
                 </div>
+                {
+                    !diver.available && (
+                    <div className="pl-2">
+                        <label htmlFor="reason">Reason:</label>
+                        <input type="text" id="reason" name="reason" value={diver.reason} onChange={(e) => handleReasonChange(diver.id, e)} />
+                    </div>
+                    )
+                }
                 <div className="pl-2">
                   <label htmlFor="time">Select time:</label>
                   <input disabled={!diver.available} type="time" id="time" name="time" value={diver.availableFrom} onChange={(e) => handleTimeChange(diver.id, e)} />
                 </div>
-                <div className="pt-4 text-xs text-gray-600">Last updated: {diver.updatedAt.toLocaleString()}</div>
+                <div className="pt-4 text-xs text-gray-600">Last updated: {moment(diver.updatedAt.toLocaleString()).format("MMMM Do YYYY, h:mm:ss a")}</div>
               </div>
             </div>
         </>)
