@@ -56,7 +56,7 @@ const DiveStatus = ({diver, toggleReactComp, handleTimeChange, handleReasonChang
                   <label htmlFor="time">Select time:</label>
                   <input disabled={!diver.available} type="time" id="time" name="time" value={diver.availableFrom} onChange={(e) => handleTimeChange(diver.id, e)} />
                 </div>
-                <div className="pt-4 text-xs text-gray-600">Last updated: {moment(diver.updatedAt.toLocaleString()).format("MMMM Do YYYY, h:mm:ss a")}</div>
+                <div className="pt-4 text-xs text-gray-600">Last updated: {moment(diver.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}</div>
               </div>
             </div>
         </>)

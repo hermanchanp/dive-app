@@ -40,7 +40,6 @@ function App() {
     )
     setDivers(newDivers);
     updateData(newDivers);
-
   };
   const handleTimeChange = (id: string, e: any) => {
     const time = e.target.value;
